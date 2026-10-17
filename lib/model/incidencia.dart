@@ -1,10 +1,12 @@
 class Incidencia {
+  static const prioridades = ['Baja', 'Media', 'Alta'];
   String id;
   String titulo;
   String descripcion;
   String cliente;
   String categoria;
   String estado;
+  String prioridad;
   String fecha;
 
   Incidencia({
@@ -14,6 +16,7 @@ class Incidencia {
     required this.cliente,
     required this.categoria,
     required this.estado,
+    required this.prioridad,
     required this.fecha,
   });
 
@@ -25,6 +28,7 @@ class Incidencia {
       cliente: m['cliente']?.toString() ?? '',
       categoria: m['categoria']?.toString() ?? 'Software',
       estado: m['estado']?.toString() ?? 'Pendiente',
+      prioridad: prioridades.contains(m['prioridad']?.toString()) ? m['prioridad'].toString() : 'Media',
       fecha: m['fecha']?.toString() ?? '',
     );
   }
@@ -37,6 +41,7 @@ class Incidencia {
       'cliente': cliente,
       'categoria': categoria,
       'estado': estado,
+      'prioridad': prioridad,
       'fecha': fecha,
     };
   }
